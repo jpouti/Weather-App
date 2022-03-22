@@ -1,3 +1,68 @@
+/* reset margin & padding from css */
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
 body {
     background-color: aquamarine;
+    width: 100vw;
+    height: 100vh;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* --- header --- */
+.header-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10vh;
+    gap: 15vw;
+    font-size: 2rem;
+}
+
+.options {
+    display: flex;
+    gap: 5vw;
+}
+
+/* --- form --- */
+.form-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10vh;
+    gap: 5vw;
+}
+
+.form-container > input {
+    width: 45vw;
+    font-size: 1.25rem;
+}
+
+/* --- weather --- */
+.weather-container {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    max-width: 45vw;
+    margin-top: 5vh;
+    gap: 2.5vh;
+}
+
+.weather-container > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 5vw;
 }
