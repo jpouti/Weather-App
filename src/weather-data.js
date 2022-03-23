@@ -8,6 +8,9 @@ const weatherData = {
     name: "",
     country: "",
     weather: "",
+    wind: 0,
+    lon: 0,
+    lat: 0,
 };
 
 // get weather data from api
@@ -22,8 +25,11 @@ const apiData = (() => {
             weatherData.name = apiData.name;
             weatherData.country = apiData.sys.country;
             weatherData.weather = apiData.weather[0].main;
+            weatherData.wind = apiData.wind.speed;
+            weatherData.lon = apiData.coord.lon;
+            weatherData.lat = apiData.coord.lat;
             let descWeather = apiData.weather[0].description;
-            displayWeather.displayElements();
+            displayWeather.displayCurrentWeather();
             gif.displayGif(descWeather);
         } catch (error) {
             console.log(error);
@@ -40,13 +46,14 @@ const apiData = (() => {
             weatherData.name = apiData.name;
             weatherData.country = apiData.sys.country;
             weatherData.weather = apiData.weather[0].main;
-            displayWeather.displayElements();
+            displayWeather.displayCurrentWeather();
         } catch (error) {
             console.log(error);
             alert("Location cannot find, please try to search again!");
         }
         return weatherData;
     }
+    
     return {metricData, imperialData};
 })();
 

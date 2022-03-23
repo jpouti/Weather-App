@@ -63,6 +63,7 @@ const displayWeather = (() => {
 
         content.appendChild(weatherContainer);
     };
+    // clears elements
     const clearElements = () => {
         const element = document.querySelector('.weather-container');
         if (element != null) {

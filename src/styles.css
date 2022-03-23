@@ -38,6 +38,21 @@ body {
     gap: 5vw;
 }
 
+.options .celsius {
+    background-color: green;
+    border-radius: 6px;
+}
+
+.options .fahrenheit {
+    background-color: green;
+    border-radius: 6px;
+}
+
+.options img:hover {
+    background-color: mediumaquamarine;
+    border-radius: 6px;
+}
+
 /* --- form --- */
 .form-container {
     display: flex;
@@ -83,4 +98,5 @@ body {
 
 #gif {
     max-width: 45vw;
+    max-height: 40vh;
 }
