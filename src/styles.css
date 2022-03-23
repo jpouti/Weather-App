@@ -52,6 +52,20 @@ body {
 }
 
 /* --- weather --- */
+.location-container {
+    display: flex;
+    border: 1px solid black;
+    margin-top: 2.5vh;
+    gap: 5vw;
+}
+
+.location-container > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 5vw;
+    padding: 1vh 1vw;
+}
+
 .weather-container {
     display: flex;
     flex-direction: column;
@@ -65,4 +79,8 @@ body {
     display: flex;
     justify-content: space-between;
     gap: 5vw;
+}
+
+#gif {
+    max-width: 45vw;
 }
