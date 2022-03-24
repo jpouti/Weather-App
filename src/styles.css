@@ -58,12 +58,31 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 10vh;
-    gap: 5vw;
+    gap: 7.5vw;
 }
 
 .form-container > input {
-    width: 45vw;
-    font-size: 1.25rem;
+    width: 35vw;
+    font-size: 1rem;
+    padding: 0.5vh 0.5vw;
+}
+
+.form-container > button {
+    font-size: 1rem;
+    padding: 0.5vh 0.5vw;
+}
+
+#selection-container {
+    display: flex;
+    justify-content: center;
+    gap: 5vw;
+    align-items: center;
+    margin-top: 2.5vh;
+}
+
+#selection-container > button {
+    font-size: 1rem;
+    padding: 0.5vh 0.5vw;
 }
 
 /* --- weather --- */
@@ -99,4 +118,27 @@ body {
 #gif {
     max-width: 45vw;
     max-height: 40vh;
+}
+
+/* --- forecast --- */
+
+.forecast-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vh;
+    margin-top: 2.5vh;
+}
+
+.forecast-container > div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1vh;
+    padding: 1vh 1.5vw;
+    border: 1px solid black;
+    border-radius: 6px;
+}
+
+#day {
+    margin-bottom: 2.5vh;
 }

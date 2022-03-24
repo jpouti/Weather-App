@@ -1,5 +1,5 @@
 import './styles.css';
-import { apiData } from './weather-data';
+import { apiData, weatherData } from './weather-data';
 import { displayWeather } from './weather-display';
 
 const celsius = document.getElementById('celsius');
@@ -26,13 +26,41 @@ fahrenheit.addEventListener('click', () => {
 // search weather data by inputting location
 const searchBtn = document.getElementById('search-btn');
 searchBtn.addEventListener('click', () => {
-    if (celsius.className === 'celsius') {
-        displayWeather.createCurrentWeather();
-        let value = document.getElementById('search').value;
-        apiData.metricData(value);        
-    } else {
-        displayWeather.createCurrentWeather();
-        let value = document.getElementById('search').value;
-        apiData.imperialData(value);   
-    }
+    displayCurrentWeather();
 });
+
+const forecastBtn = document.getElementById('forecast-btn');
+forecastBtn.addEventListener('click', () => {
+    displayForecast();
+});
+
+const currentBtn = document.getElementById('current-btn');
+currentBtn.addEventListener('click', () => {
+    displayCurrentWeather();
+});
+
+function displayCurrentWeather() {
+    if (celsius.className === 'celsius') {
+        displayWeather.clearElements();
+        displayWeather.createCurrentWeather();
+        let value = document.getElementById('search').value;
+        apiData.metricData(value);
+    } else {
+        displayWeather.clearElements();
+        displayWeather.createCurrentWeather();
+        let value = document.getElementById('search').value;
+        apiData.imperialData(value);
+    }
+};
+
+function displayForecast() {
+    if (celsius.className === 'celsius') {
+        apiData.forecastMetric(weatherData.lat, weatherData.lon);
+        displayWeather.clearElements();
+        displayWeather.createForecastElements();
+    } else {
+        apiData.forecastImperial(weatherData.lat, weatherData.lon);
+        displayWeather.clearElements();
+        displayWeather.createForecastElements();
+    }
+};
