@@ -10,6 +10,7 @@ const gif = (() => {
                 img.src = response.data.images.original.url;
             });
         } catch (error) {
+            alert("An error has occured, please try again by reloading the site");
             console.log(error);
         }
     }

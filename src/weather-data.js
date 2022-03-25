@@ -11,6 +11,7 @@ const weatherData = {
     wind: 0,
     lon: 0,
     lat: 0,
+    icon: "",
 };
 
 // get weather data from api
@@ -27,8 +28,9 @@ const apiData = (() => {
             weatherData.wind = apiData.wind.speed;
             weatherData.lon = apiData.coord.lon;
             weatherData.lat = apiData.coord.lat;
+            weatherData.icon = apiData.weather[0].icon;
             let descWeather = apiData.weather[0].description;
-            displayWeather.displayCurrentWeather();
+            displayWeather.displayCurrentWeather(' °C');
             gif.displayGif(descWeather);
         } catch (error) {
             console.log(error);
@@ -49,7 +51,7 @@ const apiData = (() => {
             weatherData.lon = apiData.coord.lon;
             weatherData.lat = apiData.coord.lat;
             let descWeather = apiData.weather[0].description;
-            displayWeather.displayCurrentWeather();
+            displayWeather.displayCurrentWeather(' ℉');
             gif.displayGif(descWeather);
         } catch (error) {
             console.log(error);
@@ -64,13 +66,15 @@ const apiData = (() => {
             const forecast = await response.json();
             console.log(forecast);
             for (let index = 0; index < forecast.daily.length; index++) {
-                document.getElementById('tempValueDay' + index).textContent = forecast.daily[index].temp.day;
-                document.getElementById('tempValueMin' + index).textContent = forecast.daily[index].temp.min;
-                document.getElementById('tempValueMax' + index).textContent = forecast.daily[index].temp.max;
-                document.getElementById('feels-like-value' + index).textContent = forecast.daily[index].feels_like.day;
+                document.getElementById('tempValueDay' + index).textContent = forecast.daily[index].temp.day + ' °C';
+                document.getElementById('tempValueMin' + index).textContent = forecast.daily[index].temp.min + ' °C';
+                document.getElementById('tempValueMax' + index).textContent = forecast.daily[index].temp.max + ' °C';
+                document.getElementById('feels-like-value' + index).textContent = forecast.daily[index].feels_like.day + ' °C';
                 document.getElementById('sunrise-value' + index).textContent = forecast.daily[index].sunrise;
                 document.getElementById('sunset-value' + index).textContent = forecast.daily[index].sunset;
                 document.getElementById('weather' + index).textContent = forecast.daily[index].weather[0].main;
+                let icon = "http://openweathermap.org/img/w/" + forecast.daily[index].weather[0].icon + ".png";
+                document.getElementById('daySymbol' + index).src = icon;
             }
         } catch (error) {
             console.log(error);
@@ -82,13 +86,15 @@ const apiData = (() => {
             const forecast = await response.json();
             console.log(forecast);
             for (let index = 0; index < forecast.daily.length; index++) {
-                document.getElementById('tempValueDay' + index).textContent = forecast.daily[index].temp.day;
-                document.getElementById('tempValueMin' + index).textContent = forecast.daily[index].temp.min;
-                document.getElementById('tempValueMax' + index).textContent = forecast.daily[index].temp.max;
-                document.getElementById('feels-like-value' + index).textContent = forecast.daily[index].feels_like.day;
+                document.getElementById('tempValueDay' + index).textContent = forecast.daily[index].temp.day + ' ℉';
+                document.getElementById('tempValueMin' + index).textContent = forecast.daily[index].temp.min + ' ℉';
+                document.getElementById('tempValueMax' + index).textContent = forecast.daily[index].temp.max + ' ℉';
+                document.getElementById('feels-like-value' + index).textContent = forecast.daily[index].feels_like.day + ' ℉';
                 document.getElementById('sunrise-value' + index).textContent = forecast.daily[index].sunrise;
                 document.getElementById('sunset-value' + index).textContent = forecast.daily[index].sunset;
                 document.getElementById('weather' + index).textContent = forecast.daily[index].weather[0].main;
+                let icon = "http://openweathermap.org/img/w/" + forecast.daily[index].weather[0].icon + ".png";
+                document.getElementById('daySymbol' + index).src = icon;
             }
         } catch (error) {
             console.log(error);
@@ -99,3 +105,9 @@ const apiData = (() => {
 })();
 
 export {apiData, weatherData};
+
+/*
+function localTime(time, zone) {
+    let date = new Date(time * 1000);
+    let timestr = date.toLocaleDateString();
+}*/

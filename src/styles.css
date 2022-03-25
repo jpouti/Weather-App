@@ -104,20 +104,29 @@ body {
     display: flex;
     flex-direction: column;
     align-content: center;
-    max-width: 45vw;
-    margin-top: 5vh;
+    max-width: 50vw;
+    margin-top: 2.5vh;
     gap: 2.5vh;
+    padding: 2vh 2vw;
+    border: 1px solid black;
+    border-radius: 6px;
 }
 
 .weather-container > div {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 5vw;
+}
+
+.gif-container {
+    justify-content: center;
 }
 
 #gif {
     max-width: 45vw;
     max-height: 40vh;
+    border-radius: 6px;
 }
 
 /* --- forecast --- */

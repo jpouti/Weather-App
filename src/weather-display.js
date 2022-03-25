@@ -4,24 +4,37 @@ const content = document.querySelector('.content-container');
 
 const displayWeather = (() => {
     //display current weather
-    const displayCurrentWeather = () => {
+    const displayCurrentWeather = (unit) => {
         const country = document.querySelector('#country');
         const city = document.querySelector('#city');
         const temp = document.querySelector('#temp');
         const feelsLike = document.querySelector('#feels-like');
         const weather = document.querySelector('#weather');
+        const weatherSymbol = document.querySelector('#weatherSymbol');
+        const wind = document.querySelector('#wind');
 
         country.textContent = weatherData.country;
         city.textContent = weatherData.name;
-        temp.textContent = weatherData.temp;
-        feelsLike.textContent = weatherData.feels_like;
+        temp.textContent = weatherData.temp + unit;
+        feelsLike.textContent = weatherData.feels_like + unit;
         weather.textContent = weatherData.weather;
+        wind.textContent = weatherData.wind + " m/s";
+        weatherSymbol.src = "http://openweathermap.org/img/w/" + weatherData.icon + ".png"
     };
     // create default elements for current weather view
     const createCurrentWeather = () => {
         displayWeather.clearElements();
         const weatherContainer = document.createElement('div');
         weatherContainer.className = 'weather-container';
+
+        const titleCard = document.createElement('div');
+        const title = document.createElement('h4');
+        title.textContent = "Current weather:"
+        titleCard.appendChild(title);
+
+        const weatherSymbol = document.createElement('img');
+        weatherSymbol.id = 'weatherSymbol';
+        titleCard.appendChild(weatherSymbol);
 
         const tempCard = document.createElement('div');
         tempCard.id = 'temp-card';
@@ -41,6 +54,15 @@ const displayWeather = (() => {
         feelsLikeCard.appendChild(feelsLike);
         feelsLikeCard.appendChild(feelsLikeValue);
 
+        const windCard = document.createElement('div');
+        windCard.id = "wind-card";
+        const wind = document.createElement('p');
+        wind.textContent = "Wind:";
+        const windValue = document.createElement('p');
+        windValue.id = 'wind'
+        windCard.appendChild(wind);
+        windCard.appendChild(windValue);
+
         const weatherCard = document.createElement('div');
         weatherCard.id = 'weather-card'
         const weather = document.createElement('p');
@@ -56,8 +78,10 @@ const displayWeather = (() => {
         gif.id = 'gif';
         gifCard.appendChild(gif);
 
+        weatherContainer.appendChild(titleCard);
         weatherContainer.appendChild(tempCard);
         weatherContainer.appendChild(feelsLikeCard);
+        weatherContainer.appendChild(windCard);
         weatherContainer.appendChild(weatherCard);
         weatherContainer.appendChild(gifCard);
 
@@ -93,7 +117,7 @@ const displayWeather = (() => {
             day.textContent = 'Day: ' + (index + 1);
             day.id = 'day'
             let daySymbol = document.createElement('img');
-            daySymbol.id = 'daySymbol';
+            daySymbol.id = 'daySymbol' + index;
     
             let tempDay = document.createElement('p');
             tempDay.textContent = 'Day Temperature: ';
