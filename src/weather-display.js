@@ -12,7 +12,9 @@ const displayWeather = (() => {
         const weather = document.querySelector('#weather');
         const weatherSymbol = document.querySelector('#weatherSymbol');
         const wind = document.querySelector('#wind');
+        const title = document.querySelector('.day');
 
+        title.textContent = weatherData.time;
         country.textContent = weatherData.country;
         city.textContent = weatherData.name;
         temp.textContent = weatherData.temp + unit;
@@ -29,7 +31,7 @@ const displayWeather = (() => {
 
         const titleCard = document.createElement('div');
         const title = document.createElement('h4');
-        title.textContent = "Current weather:"
+        title.className = 'day';
         titleCard.appendChild(title);
 
         const weatherSymbol = document.createElement('img');
@@ -114,8 +116,8 @@ const displayWeather = (() => {
             dayCard.id = 'day-card' + index;
 
             let day = document.createElement('p');
-            day.textContent = 'Day: ' + (index + 1);
-            day.id = 'day'
+            day.id = 'day' + index;
+            day.className = 'day';
             let daySymbol = document.createElement('img');
             daySymbol.id = 'daySymbol' + index;
     
@@ -172,7 +174,6 @@ const displayWeather = (() => {
             dayCard.appendChild(weatherValue);
 
             forecastContainer.appendChild(dayCard);
-            console.log('day created');
         }
         content.appendChild(forecastContainer);
     }

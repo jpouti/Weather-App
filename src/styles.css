@@ -119,7 +119,7 @@ body {
     gap: 5vw;
 }
 
-.gif-container {
+#gif-container {
     justify-content: center;
 }
 
@@ -148,6 +148,7 @@ body {
     border-radius: 6px;
 }
 
-#day {
-    margin-bottom: 2.5vh;
-}
+
+.day {
+    color:darkblue;
+} 
