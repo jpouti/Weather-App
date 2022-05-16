@@ -67,7 +67,6 @@ const apiData = (() => {
         try {
             const response = await fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&exclude=current,minutely,hourly&appid=43b125624357836ed7034f19487d8f60&units=metric', {mode: 'cors'})
             const forecast = await response.json();
-            console.log(forecast);
             for (let index = 0; index < forecast.daily.length; index++) {
                 document.getElementById('day' + index).textContent = getDate(forecast.daily[index].sunrise, forecast.timezone);
                 document.getElementById('tempValueDay' + index).textContent = forecast.daily[index].temp.day + ' °C';
@@ -89,7 +88,6 @@ const apiData = (() => {
         try {
             const response = await fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&exclude=current,minutely,hourly&appid=43b125624357836ed7034f19487d8f60&units=imperial', {mode: 'cors'})
             const forecast = await response.json();
-            console.log(forecast);
             for (let index = 0; index < forecast.daily.length; index++) {
                 document.getElementById('day' + index).textContent = getDate(forecast.daily[index].sunrise, forecast.timezone);
                 document.getElementById('tempValueDay' + index).textContent = forecast.daily[index].temp.day + ' ℉';
